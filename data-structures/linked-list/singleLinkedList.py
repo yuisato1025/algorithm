@@ -1,7 +1,7 @@
 class ListNode:
-    def __init__(self, val):
+    def __init__(self, val, next_node=None):
         self.val = val
-        self.next = None
+        self.next = next_node
 
 # Implementation for Singly Linked List
 class LinkedList:
@@ -10,6 +10,23 @@ class LinkedList:
         # removing a node from the beginning of list easier.
         self.head = ListNode(-1)
         self.tail = self.head
+    
+    def get(self, index: int) -> int:
+        cur = self.head.next
+        i = 0
+        while cur:
+            if i == index:
+                return cur.val
+            i += 1
+            cur = cur.next
+        return -1
+
+    def insertHead(self, val: int) -> None:
+        new_node = ListNode(val)
+        new_node.next = self.head.next
+        self.head.next = new_node
+        if not new_node.next:
+            self.tail = new_node
     
     def insertEnd(self, val):
         self.tail.next = ListNode(val)
