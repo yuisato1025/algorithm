@@ -1,8 +1,10 @@
 # Min Heap
 class Heap:
+    # O(1)
     def __init__(self):
         self.heap = [0]
 
+    # O(log(n))
     def push(self, val):
         self.heap.append(val)
         i = len(self.heap) - 1
@@ -14,6 +16,7 @@ class Heap:
             self.heap[i // 2] = tmp
             i = i // 2
 
+    # O(log(n))
     def pop(self):
         if len(self.heap) == 1:
             return None
@@ -44,11 +47,13 @@ class Heap:
                 break
         return res
 
+    # O(1)
     def top(self):
         if len(self.heap) > 1:
             return self.heap[1]
         return None
 
+    # O(n)
     def heapify(self, arr):
         # 0-th position is moved to the end
         arr.append(arr[0])
